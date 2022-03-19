@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexis</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Lato", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url("background.jpg");
+        margin: 50px auto;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 1em;
+      }
+
+      input {
+        padding: 0.5em;
+        border: solid 1px #999;
+      }
+
+      .butt {
+        font-weight: bold;
+        margin-top: 15px;
+      }
+      p {
+        font-weight: bold;
+      }
+
+      #mpc {
+        font-size: 25px;
+      }
+
+      h1 {
+        margin: 50px 50px;
+        font-size: 150px;
+      }
+
+      textarea {
+        min-height: 8em;
+        min-width: 100%;
+        padding: 0.5em;
+        border: solid 1px #999;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Alexis</h1>
+      <h3>Calculator</h3>
+    </header>
+    <section>
+      <form>
+        <label for="vpc">Nabavna cena :</label>
+        <input type="text" id="vpc" /><br />
+        <label for="marza">Marza u % :</label>
+        <input type="text" id="marza" /><br />
+        <input
+          type="button"
+          class="butt"
+          onClick="izracunaj()"
+          value="Izracunaj"
+        />
+      </form>
+      <p>
+        Maloprodajna cena :
+        <span id="mpc"></span>
+      </p>
+      <p>
+        Razlika u ceni :
+        <span id="ruc"></span>
+      </p>
+    </section>
+
+    <script type="text/javascript">
+      document.getElementById("vpc").focus();
+
+      function izracunaj() {
+        num1 = document.getElementById("vpc").value;
+        num2 = document.getElementById("marza").value;
+        document.getElementById("mpc").innerHTML = num1 * (1 + num2 / 100);
+        document.getElementById("ruc").innerHTML =
+          num1 * (1 + num2 / 100) - num1;
+        document.getElementById("vpc").focus();
+      }
+    </script>
+  </body>
+</html>
