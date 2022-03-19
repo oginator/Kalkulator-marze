@@ -91,9 +91,10 @@
       function izracunaj() {
         num1 = document.getElementById("vpc").value;
         num2 = document.getElementById("marza").value;
-        document.getElementById("mpc").innerHTML = num1 * (1 + num2 / 100);
+        document.getElementById("mpc").innerHTML =
+          (num1 * (1 + num2 / 100)).toFixed(2) + " din.";
         document.getElementById("ruc").innerHTML =
-          num1 * (1 + num2 / 100) - num1;
+          (num1 * (1 + num2 / 100) - num1).toFixed(2) + " din.";
         document.getElementById("vpc").focus();
       }
     </script>
