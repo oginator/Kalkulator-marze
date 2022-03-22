@@ -95,11 +95,11 @@
         num2 = document.getElementById("marza").value;
         num3 = document.getElementById("rbt").value;
         rabat = num3 / 100;
+        vp = num1 - num1 * rabat;
         document.getElementById("mpc").innerHTML =
-          ((num1 - num1 * rabat) * (1 + num2 / 100)).toFixed(2) + " din.";
+          (vp * (1 + num2 / 100)).toFixed(2) + " din.";
         document.getElementById("ruc").innerHTML =
-          ((num1 - num1 * rabat) * (1 + num2 / 100) - num1).toFixed(2) +
-          " din.";
+          (vp * (1 + num2 / 100) - vp).toFixed(2) + " din.";
         document.getElementById("vpc").focus();
       }
     </script>
