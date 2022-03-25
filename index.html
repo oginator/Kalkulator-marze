@@ -70,11 +70,14 @@
     <section>
       <form>
         <label for="vpc">Nabavna cena :</label>
-        <input type="number" id="vpc" /><br />
+        <input type="number" id="vpc" />
+        <br />
         <label for="rbt">Rabat :</label>
-        <input type="text" id="rbt" /><br />
+        <input type="text" id="rbt" />
+        <br />
         <label for="marza">Marza u % :</label>
-        <input type="text" id="marza" /><br />
+        <input type="text" id="marza" />
+        <br />
         <input
           type="button"
           class="butt"
@@ -82,10 +85,26 @@
           value="Izracunaj"
         />
       </form>
+    </br>
+      <p>Prethodni artikal :</p> </br>
+      <p>
+        Nabavna cena :
+        <span id="num4"></span> 
+      </p>
+      <p>
+        Rabat :
+        <span id="num6"></span> 
+      </p>
+      <p>
+        Marza :
+        <span id="num5"></span> 
+      </p>
+    </br>
       <p>
         Veleprodajna cena :
         <span id="mpc"></span>
       </p>
+    </br>
       <p>
         Razlika u ceni :
         <span id="ruc"></span>
@@ -93,6 +112,14 @@
     </section>
 
     <script type="text/javascript">
+      document.addEventListener("keydown", function (event) {
+        if (event.keyCode === 13 && event.target.nodeName === "INPUT") {
+          var form = event.target.form;
+          var index = Array.prototype.indexOf.call(form, event.target);
+          form.elements[index + 1].focus();
+          event.preventDefault();
+        }
+      });
       document.getElementById("vpc").focus();
 
       function izracunaj() {
@@ -105,7 +132,16 @@
           (vp * (1 + num2 / 100)).toFixed(2) + " din.";
         document.getElementById("ruc").innerHTML =
           (vp * (1 + num2 / 100) - vp).toFixed(2) + " din.";
+        num4 = num1;
+        num5 = num2;
+        num6 = num3;
+        document.getElementById("num4").innerHTML = num4 + " din.";
+        document.getElementById("num5").innerHTML = num5 + " %";
+        document.getElementById("num6").innerHTML = num6 + " %";
         document.getElementById("vpc").focus();
+        document.getElementById("vpc").value = "";
+        document.getElementById("marza").value = "";
+        document.getElementById("rbt").value = "";
       }
     </script>
   </body>
