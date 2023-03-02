@@ -60,6 +60,20 @@
         padding: 0.5em;
         border: solid 1px #999;
       }
+      #rbtchk{
+        margin-left: 10px;
+      }
+      #marzchk{
+        margin-left: 10px;
+      }
+      .section{
+        margin-right: 0;
+      }
+      .duznici{
+        display: block;
+        margin-top: 10%;
+      }
+    
     </style>
   </head>
   <body>
@@ -67,13 +81,14 @@
       <h1>Alexis</h1>
       <h3>Calculator</h3>
     </header>
-    <section>
+    <section class="duznici"></section>
+    <section class="section">
       <form>
         <label for="vpc">Nabavna cena :</label>
         <input type="number" id="vpc" />
         <br />
         <label for="rbt">Rabat :</label>
-        <input type="text" id="rbt" />
+        <input type="text" id="rbt" /> 
         <br />
         <label for="marza">Marza u % :</label>
         <input type="text" id="marza" />
@@ -101,8 +116,17 @@
       </p>
     </br>
       <p>
-        Veleprodajna cena :
+      VP cena bez PDV-a :
+      <span id="mpbezpdv"></span>
+      </p>
+      <p>
+        VP cena sa PDV-om :
         <span id="mpc"></span>
+      </p>
+    </br>
+      <p>
+        PDV :
+        <span id="mpdv"></span>
       </p>
     </br>
       <p>
@@ -128,16 +152,24 @@
         num3 = document.getElementById("rbt").value;
         rabat = num3 / 100;
         vp = num1 - num1 * rabat;
+        vpsamarzom = (vp * (1 + num2 / 100)).toFixed(2);
+        vp20 = (vpsamarzom * 20 / 100).toFixed(2); 
+        
+        document.getElementById("mpbezpdv").innerHTML =
+          (vp * (1 + num2 / 100)).toFixed(2) + " din.";  
         document.getElementById("mpc").innerHTML =
-          (vp * (1 + num2 / 100)).toFixed(2) + " din.";
+          (vp * (1 + num2 / 100) + (vp20 * 1)).toFixed(2) + " din.";       
         document.getElementById("ruc").innerHTML =
-          (vp * (1 + num2 / 100) - vp).toFixed(2) + " din.";
+         (vp * (1 + num2 / 100) - vp).toFixed(2) + " din.";
+     
         num4 = num1;
         num5 = num2;
         num6 = num3;
+        
         document.getElementById("num4").innerHTML = (num4 * 1).toFixed(2) + " din.";
         document.getElementById("num5").innerHTML = num5 + " %";
         document.getElementById("num6").innerHTML = num6 + " %";
+        document.getElementById("mpdv").innerHTML = vp20 + " din."; 
         document.getElementById("vpc").focus();
         document.getElementById("vpc").value = "";
         document.getElementById("marza").value = "";
