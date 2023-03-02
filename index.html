@@ -73,7 +73,7 @@
         display: block;
         margin-top: 10%;
       }
-    
+   
     </style>
   </head>
   <body>
@@ -107,6 +107,10 @@
         <span id="num4"></span> 
       </p>
       <p>
+        Nbv sa rabatom :
+        <span id="num7"></span> 
+      </p>
+      <p>
         Rabat :
         <span id="num6"></span> 
       </p>
@@ -130,7 +134,7 @@
       </p>
     </br>
       <p>
-        Razlika u ceni :
+        Razlika u ceni bez PDV :
         <span id="ruc"></span>
       </p>
     </section>
@@ -165,7 +169,8 @@
         num4 = num1;
         num5 = num2;
         num6 = num3;
-        
+        num7 = vp;
+        document.getElementById("num7").innerHTML = num7.toFixed(2) + " din.";
         document.getElementById("num4").innerHTML = (num4 * 1).toFixed(2) + " din.";
         document.getElementById("num5").innerHTML = num5 + " %";
         document.getElementById("num6").innerHTML = num6 + " %";
